@@ -1,0 +1,268 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <meta http-equiv="refresh" content="20">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <title>Notification</title>
+
+        <style>
+            body{
+                font-family: sans-serif;
+                background: #fff;
+                /* background: #f0fcfa;  */
+                /* background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);   */
+                /* background: linear-gradient(to right, #EC6EAD, #3494E6);  */
+            }
+
+            .header-row{
+                background: #009688;
+                /* color: #000; */
+                height: auto;
+                padding: 30px 30px 30px 0;
+                /* border-bottom: 2px solid #000; */
+            }
+
+            .header-row img{
+                width: 350px;
+                height: auto;
+                float: left;
+                margin-left: 120px;
+                border: 1px solid #800000;
+                border-radius: 6px;
+            }
+
+            .header-row li{
+                margin: 0 8px;
+                /* border: 2px solid #fff; */
+            }
+            .header-row li a{
+                color: #fff;
+                font-size: 18px;
+            }
+
+            .header-row .btn{
+                background: #009688;
+                border: 2px solid #fff;
+                margin-left: 4px;
+                border-radius: 8px;
+            }
+
+            .header-row .active, .header-row li a:hover{
+                color: #009688;
+                background: #fff;
+                border-radius: 3px;
+            }
+
+            .header-row .btn:hover{
+                background: #fff;
+                font-weight: unset;
+                border-radius: 8px;
+            }
+
+            .filter-row{
+                background: rgb(252, 249, 249);
+                font-family: sans-serif;
+                min-height: 75px;
+                text-align: center;
+                font-size: 20px;
+                padding: 40px 0;
+                border: 1px solid rgb(151, 150, 150);
+            }
+
+            .filter-row label{
+                padding: 12px;
+            }
+
+            .filter-row input{
+                border-radius: 5px;
+                /* width: 200px; */
+            }
+
+            .btn-search {
+                background: #424242;
+                border-radius: 3px;
+                font-size: 20px;
+                color: #fff;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #1c1c1c;
+                width: 150px;
+                margin-top: 40px;
+            }
+
+            .btn-search:link, .btn-search:visited {
+                color: #fff;
+            }
+            .btn-search:active, .btn-search:hover{
+                background: #1c1c1c;
+                color: #fff;
+            }
+
+            .heading{
+                text-align: center;
+                padding: 35px 0;
+            }
+
+            .heading h2{
+                font-weight: 600;
+                font-family: 'Orbitron';
+                font-size: 36px;
+                text-decoration: underline;
+            }
+
+            .tablerow{
+                /* margin: 30px 0; */
+                min-height: 415px;
+                font-family: sans-serif;
+                /* margin: auto; */
+            }
+
+            .tablerow table{
+                vertical-align: middle;
+            }
+                        tbody {
+                display:block;
+                height:500px;
+                overflow:auto;
+            }
+            thead, tbody tr {
+                display:table;
+                width:100%;
+                table-layout:fixed;
+            }
+
+            .tablerow thead h5{
+                font-weight: 600;
+                font-size: 22px;
+            }
+
+            .tablerow tbody h3{
+                font-size: 20px;
+                text-align: center;
+                font-family: sans-serif;
+                /* margin-top: 20px; */
+            }
+
+            .tablerow tbody img{
+                height: 65px;
+                width: auto;
+            }
+            .footerrow{
+                background: #008080;
+                color: #fff;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row header-row">
+                <div class="col-3"><img src="{% static 'assets/img/logo.jpg' %}" alt="logo"></div>
+                <div class="col">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                       <a href="logout" class="btn btn-primary">Sign Out</a>
+                    </li>
+                  </ul>
+                  </div>
+            </div>
+
+            <div class="row filter-row">
+                <h4><b><u>Filter Violator List</u></b></h4><br/>
+
+                <form  method="POST" enctype='multipart/form-data'>
+                  {% csrf_token %}
+                <div class="col">
+                    <label for="Select Date" class ="Dates"><b>Choose Date:</b></label>
+                    <input  type="date" id="date" name="date"/>
+                    <input type="submit" value="Apply" class="btn btn-primary"/>
+                 </div>
+
+
+                 <!-- <div class="col">
+                    <label for="appt-time" class="Dates"><b>Choose Duration:</b></label><br/>
+                    <label for="appt-time" class="Dates">From:</label>
+                    <input type="time" name="appt-time" step="2" id="appt">
+                    <label for="appt-time" class="Dates">To:</label>
+                    <input type="time" name="appt-time" step="2" id="appt">
+                    <span class="validity"></span>
+                  </div> -->
+
+              </form>
+            </div>
+
+            <div class="row heading">
+                <h2>VIOLATORS</h2>
+            </div>
+
+            <div class="container-fluid">
+                <div class="row tablerow">
+                    <div class="col">
+                        <div class="table-responsive ">
+                            <table class="table table-striped text-center" id="stats">
+
+                                <thead>
+                                    <tr>
+                                      <th scope="col"><h5>Photo</h5></th>
+                                      <th scope="col"><h5>USN</h5></th>
+                                      <th scope="col"><h5>Date & Time</h5></th>
+                                      <!-- <th scope="col"><h5>Time</h5></th> -->
+                                      <th scope="col"><h5>Action</h5></th>
+                                    </tr>
+                                </thead>
+
+                              <tbody>
+                                {% for violator in violators %}
+                                <tr>
+                                        <td scope="col">
+                                            <a href="{{violator.pic.url}}" target="_blank"><img src="{{violator.pic.url}}" alt="pic"></a>
+                                        </td>
+                                    
+                                      {% ifequal violator.usn "UNKNOWN" %}
+                                      <td scope="col"><h3>Unknown</h3></td>
+                                      {% else %}
+                                      <td scope="col"><h3>{{violator.usn}}</h3></td>
+                                      {% endifequal %}
+                                      <td scope="col"><h3>{{violator.timestamp}}</h3></td>
+                                      {% ifequal violator.usn "UNKNOWN" %}
+                                      <td scope="col"><h3>-</h3></td>
+                                      {% else %}
+                                    <td scope="col"><h3><a href="{% url 'ViolatorDetails' violator.usn %}"><span class="btn btn-primary">View Details</span></a></h3></td>
+                                    {% endifequal %}
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row footerrow">
+                <div class="col text-center my-auto">
+                    <footer class="page-footer font-small">
+                      <div class="footer-copyright text-center py-3">©2021 Copyright: All rights reserved.</div>
+                   </footer>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </body>
+</html>

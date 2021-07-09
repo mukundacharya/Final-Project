@@ -1,0 +1,392 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <title>Home</title>
+
+        <style>
+            .header-row{
+                background-image: url({% static 'assets/img/b_ground.gif' %});
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                height: 750px;
+                padding: 30px 30px 30px 0;
+                margin-bottom: 40px;
+            }
+
+            .footer-row img{
+                width: 350px;
+                height: auto;
+                float: left;
+                border: 1px solid #800000;
+                border-radius: 6px;
+                margin-bottom: 25px;
+            }
+            .header-row li{
+                margin: 0 8px;
+                /* border: 2px solid #fff; */
+            }
+            .header-row li a{
+                color: #fff;
+                font-size: 18px;
+            }
+
+            .header-row .btn{
+                background: #000;
+                border: 2px solid #fff;
+                margin-left: 4px;
+                border-radius: 8px;
+            }
+
+            .header-row .active, .header-row li a:hover{
+                color: #000;
+                background: #fff;
+                border-radius: 3px;
+            }
+
+            .header-row .btn:hover{
+                background: #fff;
+                font-weight: unset;
+                border-radius: 8px;
+            }
+
+
+            /*******************************/
+            .header-row h1{
+                font-weight: bolder;
+                color: #fff;
+                text-align: center;
+                /* margin: 250px 0 0 0; */
+                padding: auto;
+                font-family: orbitron;
+                font-size: 75px;
+                animation: beat 2.5s infinite alternate;
+            }
+
+            @keyframes beat{
+                to { transform: scale(1.3); }
+            }
+
+           /*******************************/
+            .working-row, .feature-row,.contact-row{
+                margin-bottom: 75px;
+            }
+
+            .working-row h2, .feature-row h2, .contact-row h2{
+                text-align: center;
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 35px;
+                padding: 40px 0 40px;
+                font-weight: 550;
+            }
+
+            .feature-row .col{
+                margin: 0 40px;
+            }
+
+            .working-row .colm{
+                margin: 0 40px 40px 40px;
+                border: 2px solid #000;
+                border-radius: 15px;
+                padding: 15px 10px;
+            }
+
+            .feature-row img{
+                height: 80px;
+                width: auto;
+                padding: 15px 0;
+            }
+
+            .feature-row h6, .working-row h6{
+                text-align: center;
+                font-family: sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+                /* padding: 0 0 15px 0; */
+            }
+
+            .feature-row, .working-row{
+                text-align: center;
+                font-family: sans-serif;
+                font-size: 16px;
+            }
+
+            .working-row img{
+                height: 80px;
+                width: auto;
+                padding: 20px 20px;
+                border: 2px solid #000;
+                border-radius: 50%;
+                margin-bottom: 15px;
+            }
+
+            .contact-row form{
+                padding: 10px 150px;
+                font-size: 17px;
+                font-family: sans-serif;
+            }
+
+            .footer-row{
+                background: #009688;
+                color: #fff;
+                padding: 50px 0;
+                margin-top: 25px;
+                font-size: 17px;
+            }
+
+            .footer-row h4{
+                text-align: center;
+            }
+            .footer-row a{
+                text-decoration: none;
+                color: #fff;
+                text-align: center;
+            }
+
+            .footer-row ul{
+                list-style-type: none;
+                padding: 0;
+                margin: 0;
+                text-align: center;
+            }
+
+            .footer-row table{
+                color: #fff;
+                text-decoration: none;
+            }
+
+            .footer-row .btn{
+                background:  #cc0000;
+                color: #fff;
+                font-family: sans-serif;
+                margin: 25px 0 0 0;
+                padding: 10px 50px;
+                font-size: 18px;
+            }
+
+            .footer-row .btn:hover{
+                background: #fff;
+                color: #cc0000;
+            }
+
+            .footer-row a:hover{
+                background: #fff;
+                color: blue;
+                padding: 7px;
+                border-radius: 3px;
+            }
+            .footer-row-2{
+                background: #03534f;
+                text-align: center;
+                color: #fff;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="row header-row">
+                <!-- <div class="col-3"><img src="images/logo.jpg" alt="logo"></div> -->
+                <div class="col">
+                <ul class="nav justify-content-end ">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li>
+                       <a href="login" class="btn btn-primary">Login / Register</a>
+                    </li>
+                  </ul>
+                  <!-- <h1>Covid Safety Protocol Monitoring Software</h1> -->
+                  </div>
+
+                  <!-- <div class="cor-row"> -->
+                    <h1>Covid Safety Protocol Monitoring Software</h1>
+                <!-- </div> -->
+
+            </div>
+<!-- /*****************************************************/ -->
+
+<!-- /******************************************************/ -->
+
+            <div class="row working-row">
+                <h2>How does it work?</h2>
+                <div class="col-1"></div>
+                <div class="col-md-12 col-lg colm">
+                    <h6>Step 1</h6>
+                    <img src= "{% static 'assets/img/register.png' %}" alt="register">
+                    <p>Register with the Covid Safety Protocol Monitoring Software.</p>
+                </div>
+                <div class="col-md-12 col-lg colm">
+                    <h6>Step 2</h6>
+                    <img src="{% static 'assets/img/camera.png' %}" alt="camera">
+                    <p>Add the existing cameras.</p>
+                </div>
+                <div class="col-md-12 col-lg colm">
+                    <h6>Step 3</h6>
+                    <img src="{% static 'assets/img/mask.png' %}" alt="mask">
+                    <p>Start getting No-mask data and Alerts.</p>
+                </div>
+                <div class="col-md-12 col-lg colm">
+                    <h6>Step 4</h6>
+                    <img src="{% static 'assets/img/notification.png' %}" alt="notificayion">
+                    <p>Send notifications to Admin and Violators.</p>
+                </div>
+                <div class="col-1"></div>
+            </div>
+
+            <div class="row feature-row">
+                <h2>Features of Face Mask Detection System</h2>
+                    <div class="col-md-12 col-lg"></div>
+                    <div class="col">
+                        <img src="{% static 'assets/img/alert.png' %}" alt="alert">
+                        <h6>Automatically Send Alerts</h6>
+                        <p>Automatocally send alert to the faces which are recognized and send the notification to admin in case of unrecognized face.</p>
+                    </div>
+
+                    <div class="col-md-12 col-lg">
+                        <img src="{% static 'assets/img/hardware.png' %}" alt="hardware">
+                        <h6>No New Hardware to Install</h6>
+                        <p>The System can work on existing hardwares like cameras without the need of extra hardware to install.</p>
+                    </div>
+
+                    <div class="col-md-12 col-lg">
+                        <img src="{% static 'assets/img/easy.png' %}" alt="Easy">
+                        <h6>Easy to Use</h6>
+                        <p>The system comes with the easy to use support with a basic knowledge of computer operation.</p>
+                    </div>
+                    <div class="col"></div>
+            </div>
+<!--
+            <div class=" row contact-row" id="Contact Us">
+                    <h2>Contact Us</h2>
+
+                    <form>
+                        <div class="form-group">
+                        <label for="Name">Full Name</label>
+                        <input type="text" class="form-control" id="InputName" placeholder="Enter Full Name">
+                        </div>
+                        
+
+                        <div class="form-group">
+                        <label for="InputEmail">Email address</label>
+                        <input type="email" class="form-control" id="InputEmail" placeholder="Enter email">
+                        </div>
+                        
+
+                        <div class="form-group">
+                        <label for="InputMobile">Enter Mobile No.</label>
+                        <input type="tel" class="form-control" id="InputMobile" placeholder="Mobile No.">
+                        </div>
+
+                        
+                        <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Ask Query</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <small class="form-text text-muted">We'll never share your details with anyone else.</small>
+
+                        <div class="text-center">
+                        <button type="submit" class="btn btn-primary ">Submit</button>
+                        </div>
+
+                </form>
+            </div>
+-->
+            <div class="row footer-row">
+                <div class="col"></div>
+                <div class="col-3">
+                    <img src="{% static 'assets/img/logo.jpg' %}" alt="logo">
+
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                    <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+                                </svg></td>
+                                <td><p>support@nie.ac.in</p></td>
+                            </tr>
+                            <tr>
+                                <td><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                    <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+                                </svg></td>
+                                <td><p>(+91) 9876543210</p></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary ">Get Started</button>
+                    </div>
+
+                </div>
+
+                <div class="col-2">
+                    <h4>Quick Links</h4>
+                      <ul>
+                        <br/><li><a href="#">Home</a></li><br/>
+                        <li><a href="#">About Us</a></li><br/>
+                        <li><a href="#Contact Us">Contact Us</a></li><br/>
+                        <li><a href="#">Contribute</a></li>
+                      </ul>
+                    </div>
+
+                <div class="col-4">
+                    <h4>Contact Hours</h4><br/>
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Monday Thursday</td>
+                                    <td>9:00am - 5:00pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td>9:00am - 4:00pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Sturday</td>
+                                    <td>9:00am - 1:00pm</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td>Holiday</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                </div>
+                <div class="col"></div>
+            </div>
+            {% if messages %}
+            <script>
+            {% for message in messages %}
+            alert("{{ message }}");
+
+            </script>
+            {% endfor %}
+
+            {% endif %}
+            <div class="row footer-row-2">
+                <div class="col text-center my-auto">
+                    <footer class="page-footer font-small">
+                      <div class="footer-copyright text-center py-3">©2021 Copyright: All rights reserved.</div>
+                   </footer>
+                </div>
+            </div>
+
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+
+</html>

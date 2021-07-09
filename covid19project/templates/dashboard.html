@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+        <title>Admin Dashboard</title>
+
+        <style>
+            body{
+                font-family: 'Poiret One';
+                background: #fff;
+                /* background: #f0fcfa;  */
+                /* background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);   */
+                /* background: linear-gradient(to right, #EC6EAD, #3494E6);  */
+            }
+
+            .header-row{
+                background: #009688;
+                /* color: #000; */
+                height: auto;
+                padding: 30px 30px 30px 0;
+                /* border-bottom: 2px solid #000; */
+            }
+
+            .header-row img{
+                width: 350px;
+                height: auto;
+                float: left;
+                margin-left: 120px;
+                border: 1px solid #800000;
+                border-radius: 6px;
+            }
+
+            .header-row li{
+                margin: 0 8px;
+                /* border: 2px solid #fff; */
+            }
+            .header-row li a{
+                color: #fff;
+                font-size: 18px;
+            }
+
+            .header-row .btn{
+                background: #009688;
+                border: 2px solid #fff;
+                margin-left: 4px;
+                border-radius: 8px;
+            }
+
+            .header-row .active, .header-row li a:hover{
+                color: #009688;
+                background: #fff;
+                border-radius: 3px;
+            }
+
+            .header-row .btn:hover{
+                background: #fff;
+                font-weight: unset;
+                border-radius: 8px;
+            }
+
+            /* .row-2{
+                text-align: center;
+            } */
+            .card{
+                margin: 50px;
+                padding: 80px 30px 70px;
+                text-align: center;
+                background-color: #fff;
+                /* color:  #000; */
+                /* #F4CE6A; */
+                height: 500px;
+                border-radius: 25px;
+                border: 3px solid #008080;
+            }
+
+            .card h2{
+                font-weight: 600;
+                font-size: 34px;
+            }
+
+            .card:hover {
+                box-shadow: 0 0 30px #3c504e;
+                /* #8b4040;  */
+                background-color: #f6fafa;
+                border-radius: 5px solid #009688;
+                /* #f8f6f6; */
+            }
+
+            .card-img{
+                height: 100px;
+                width: 100px;
+                padding: 10px;
+                border: 4px solid #000;
+                border-radius: 50%;
+                margin: auto;
+                /* background-color: #b5f0f0; */
+            }
+
+            .row-2 .btn{
+                background: #008080;
+                font-size: 20px;
+                font-family: 'Orbitron';
+                width: 125px;
+                padding: auto;
+                color: #fff;
+                border: 2px solid #008080;
+                border-radius: 12px;
+            }
+
+            .row-2 .btn:hover{
+                background: #fff;
+                color: #008080;
+            }
+            .footerrow
+            {
+                background: #008080;
+                color: #fff;
+            }
+        </style>
+
+    </head>
+
+
+    <body>
+
+        <div class="container-fluid">
+            <div class="row header-row">
+                <div class="col-3"><img src="{% static 'assets/img/logo.jpg' %}" alt="logo"></div>
+                <div class="col">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" href="dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                       <a href="logout" class="btn btn-primary">Sign Out</a>
+                    </li>
+                  </ul>
+                  </div>
+            </div>
+
+            <div class="row row-2">
+
+                    <div class="col-md-12 col-lg justify-content-center">
+                        <div class="card" >
+                            <img src="{% static 'assets/img/student.png' %}" class="card-img" alt="student"><br/>
+                            <div class="card-body">
+                            <h2 class="card-title">Student Details</h2><br/>
+                            <p class="card-text">View, Delete and Add New Students here.</p><br/>
+                            <a href="ViewStudents" class="btn btn-primary">Click</a>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="col-md-12 col-lg justify-content-center">
+                    <div class="card">
+                        <img src="{% static 'assets/img/livestream.png' %}" class="card-img" alt="livestream"><br/>
+                        <div class="card-body">
+                          <h2 class="card-title">Watch Live-stream</h2><br/>
+                          <p class="card-text">Monitor the live Video Stream here.</p><br/>
+                          <a href="ViewAllCameras" class="btn btn-primary">Click</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg justify-content-center">
+                    <div class="card">
+                        <img src="{% static 'assets/img/notification_dashboard.png' %}" class="card-img" alt="notification"><br/>
+                        <div class="card-body">
+                          <h2 class="card-title">Notifications</h2><br/>
+                          <p class="card-text">See the Violators and their details here.</p><br/>
+                          <a href="notifications" class="btn btn-primary">Click</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row footerrow">
+                <div class="col text-center my-auto">
+                    <footer class="page-footer font-small">
+                      <div class="footer-copyright text-center py-3">©2021 Copyright: All rights reserved.</div>
+                   </footer>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

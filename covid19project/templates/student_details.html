@@ -1,0 +1,319 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <title>Student Details</title>
+
+        <style>
+           body{
+                /* font-family: 'Poiret One'; */
+                font-family: sans-serif;
+                background: #fff;
+                /* background: #f0fcfa;  */
+                /* background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);   */
+                /* background: linear-gradient(to right, #EC6EAD, #3494E6);  */
+            }
+
+            .header-row{
+                background: #009688;
+                /* color: #000; */
+                height: auto;
+                padding: 30px 30px 30px 0;
+                /* border-bottom: 2px solid #000; */
+            }
+
+            .header-row img{
+                width: 350px;
+                height: auto;
+                float: left;
+                margin-left: 120px;
+                border: 1px solid #800000;
+                border-radius: 6px;
+            }
+
+            .header-row li{
+                margin: 0 8px;
+                /* border: 2px solid #fff; */
+            }
+            .header-row li a{
+                color: #fff;
+                font-size: 18px;
+            }
+
+            .header-row .btn{
+                background: #009688;
+                border: 2px solid #fff;
+                margin-left: 4px;
+                border-radius: 8px;
+            }
+
+            .header-row .active, .header-row li a:hover{
+                color: #009688;
+                background: #fff;
+                border-radius: 3px;
+            }
+
+            .header-row .btn:hover{
+                background: #fff;
+                font-weight: unset;
+                border-radius: 8px;
+            }
+
+            .search-row{
+                margin: 0 50px;
+            }
+            .btn-search {
+                background: #424242;
+                border-radius: 3px;
+                color: #fff;
+                border-width: 1px;
+                border-style: solid;
+                border-color: #1c1c1c;
+
+            }
+
+            .add-row .btn-add{
+                background:  #24a0ed;
+                margin: 40px 0 40px;
+                color: #fff;
+                height: 60px;
+                width: 25%;
+                margin-left: 38%;
+                font-size: 25px;
+                padding: 9px 0 0;
+                border: 2px solid rgb(8, 119, 73);
+                border-radius: 10px;
+            }
+
+            .tablerow{
+                margin: 30px 0;
+                min-height: 525px;
+                font-family: sans-serif;
+            }
+
+            .tablerow thead h5{
+                font-weight: 600;
+                font-size: 22px;
+            }
+
+            .tablerow tbody h3{
+                font-size: 20px;
+                text-align: center;
+                font-family: sans-serif;
+            }
+                          tbody {
+                  display:block;
+                  height:500px;
+                  overflow:auto;
+              }
+              thead, tbody tr {
+                  display:table;
+                  width:100%;
+                  table-layout:fixed;
+              }
+
+            .btn-search:link, .btn-search:visited {
+                color: #fff;
+            }
+            .btn-search:active, .btn-search:hover{
+                background: #1c1c1c;
+                color: #fff;
+            }
+
+            .btn-add:hover{
+                background: rgb(20, 90, 60);
+                /* color: rgb(65, 15, 15); */
+            }
+
+            .footerrow
+            {
+                background: #008080;
+                color: #fff;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+
+        <div class="container-fluid">
+            <div class="row header-row">
+                <div class="col-3"><img src="{% static 'assets/img/logo.jpg' %}" alt="logo"></div>
+                <div class="col">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                      <a class="nav-link" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                       <a href="logout" class="btn btn-primary">Sign Out</a>
+                    </li>
+                  </ul>
+                  </div>
+            </div>
+
+             <div class="row add-row">
+                <span class="input-group-btn">
+                    <!-- <a href="student_register.html"<button class="btn btn-add" type="button"> Add New Student</button></a> -->
+                    <a href="studentRegister" class="btn btn-add">Add New Student</a>
+                  </span>
+             </div>
+
+             <div class="row search-row">
+                <div class="input-group">
+                    <input type="text" class="form-control" id='searchField' placeholder="Search for...">
+                      <span class="input-group-btn">
+                        <button class="btn btn-search" type="button"><i class="fa fa-search fa-fw"></i> Search</button>
+                      </span>
+                </div>
+             </div>
+
+             <div class="container-fluid">
+                <div class="row tablerow">
+                    <div class="col">
+                        <div class="table-responsive ">
+                          <div class="appTable">
+
+                            <table class="table table-striped text-center" id="stats">
+
+                                <thead>
+                                    <tr>
+                                      <th scope="col"><h5>Name</h5></th>
+                                      <th scope="col"><h5>USN</h5></th>
+                                      <th scope="col"><h5>Branch</h5></th>
+                                      <th scope="col"><h5>Section</h5></th>
+                                      <th scope="col"><h5>Action</h5></th>
+                                    </tr>
+                                </thead>
+                              <tbody>
+                                {% for student in students %}
+                                <tr>
+                                  <td>{{student.first_name}} {{student.last_name}}</td>
+                                  <td>{{student.usn}}</td>
+                                  <!-- <td>{{admin.first_name}} {{admin.last_name}}</td> -->
+                                  <td>{{student.branch}}</td>
+                                  <td>{{student.section}}</td>
+                                  <td><div class="radio" style="text-align: center">
+                                                 <label><a href="{% url 'ViewStudentDetails' student.usn %}"  class="btn btn-primary">View</a></label>
+                                                 <label><a href="{% url 'DeleteStudent' student.usn %}"  class="btn btn-danger">Delete</a></label>
+                                             </div>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+
+                            </table>
+
+                          </div>
+
+                    <div class="tableOutput">
+
+                      <table class="table table-striped text-center" id="stats">
+
+                          <thead>
+                              <tr>
+                                <th scope="col"><h5>Name</h5></th>
+                                <th scope="col"><h5>USN</h5></th>
+                                <th scope="col"><h5>Branch</h5></th>
+                                <th scope="col"><h5>Section</h5></th>
+                                <th scope="col"><h5>Action</h5></th>
+                              </tr>
+                          </thead>
+                        <tbody class="tableBody">
+
+
+                        </tbody>
+
+                      </table>
+
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if messages %}
+        <script>
+          {% for message in messages %}
+          alert("{{ message }}");
+
+        </script>
+        {% endfor %}
+
+        {% endif %}
+
+            <div class="row footerrow">
+                <div class="col text-center my-auto">
+                    <footer class="page-footer font-small">
+                      <div class="footer-copyright text-center py-3">©2021 Copyright: All rights reserved.</div>
+                   </footer>
+                </div>
+            </div>
+        </div>
+
+    </body>
+  <script type="text/javascript">
+
+  const searchField=document.querySelector("#searchField");
+  const tableOutput= document.querySelector(".tableOutput");
+  const appTable= document.querySelector(".appTable");
+  tableOutput.style.display="none";
+  const tableBody=document.querySelector(".tableBody");
+
+
+  searchField.addEventListener ('keyup',(e)=>{
+
+    const searchValue=e.target.value;
+
+    if(searchValue.trim().length>0){
+      tableBody.innerHTML="";
+    console.log("searchValue",searchValue);
+
+      fetch("SearchStudent",{
+        body: JSON.stringify({searchText:searchValue}),
+        method:"POST",
+      })
+      .then((res)=>res.json())
+      .then((data)=>{
+        console.log("data",data);
+
+        appTable.style.display="none";
+        tableOutput.style.display="block";
+
+        if(data.length===0){
+            tableOutput.innerHTML='No Search results'
+        }
+        else {
+
+          data.forEach((item)=>{
+              tableBody.innerHTML+=`
+    <tr>
+    <td>${item.first_name} ${item.last_name}</td>
+    <td>${item.usn}</td>
+    <td>${item.branch}</td>
+    <td>${item.section}</td>
+  <td> </td>
+    </tr>`;
+
+  });
+        }
+      });
+
+    }
+    else {
+      tableOutput.style.display="none";
+      appTable.style.display="block";
+    }
+
+
+
+  });
+
+  </script>
+</html>
